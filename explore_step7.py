@@ -11,6 +11,9 @@ from PIL import Image
 import matplotlib.pyplot as plt
 import os
 
+BASE_DIR = os.path.dirname(__file__)
+SHP_PATH = os.path.join(BASE_DIR, "data", "ne_10m_land.shp")
+
 # --- Load and process (Steps 1-4) ---
 ds = nc.Dataset("sscofs.t15z.20260301.fields.f069.nc")
 
@@ -54,7 +57,7 @@ points = np.column_stack([lonc, latc])
 u_grid = griddata(points, u, (grid_lon_2d, grid_lat_2d), method="linear")
 v_grid = griddata(points, v, (grid_lon_2d, grid_lat_2d), method="linear")
 
-land = gpd.read_file("data/ne_10m_land/ne_10m_land.shp")
+land = gpd.read_file(SHP_PATH)
 land_clipped = land.clip(box(LON_MIN, LAT_MIN, LON_MAX, LAT_MAX))
 src_transform = rasterio.transform.from_bounds(LON_MIN, LAT_MIN, LON_MAX, LAT_MAX, GRID_RES, GRID_RES)
 land_mask = rasterio.features.geometry_mask(

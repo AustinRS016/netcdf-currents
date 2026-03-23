@@ -38,29 +38,32 @@ For advanced parameters:
 
 - COMPRESS=DEFLATE
 - NBITS=1
-  Output data type is 'Byte'
-  {
-  "area_units": "m2",
-  "distance_units": "meters",
-  "ellipsoid": "EPSG:7019",
-  "inputs": {
-  "BURN": 0.0,
-  "CREATION_OPTIONS": "COMPRESS=DEFLATE|NBITS=1",
-  "DATA_TYPE": 0,
-  "EXTENT": "-13756420.998800000,-13587883.239700001,5934610.381000000,6307335.634200000 [EPSG:3857]",
-  "EXTRA": "",
-  "FIELD": "id",
-  "HEIGHT": 10.0,
-  "INIT": null,
-  "INPUT": "puget_water_land_mask_reproj.geojson",
-  "INVERT": false,
-  "NODATA": null,
-  "OUTPUT": "C:/Users/austi/Downloads/test_export_puget_mask.tif",
-  "UNITS": 1,
-  "USE_Z": false,
-  "WIDTH": 10.0
-  }
-  }
+
+Output data type is 'Byte'
+
+example JSON of input:
+{
+"area_units": "m2",
+"distance_units": "meters",
+"ellipsoid": "EPSG:7019",
+"inputs": {
+"BURN": 0.0,
+"CREATION_OPTIONS": "COMPRESS=DEFLATE|NBITS=1",
+"DATA_TYPE": 0,
+"EXTENT": "-13756420.998800000,-13587883.239700001,5934610.381000000,6307335.634200000 [EPSG:3857]",
+"EXTRA": "",
+"FIELD": "id",
+"HEIGHT": 10.0,
+"INIT": null,
+"INPUT": "puget_water_land_mask_reproj.geojson",
+"INVERT": false,
+"NODATA": null,
+"OUTPUT": "C:/Users/austi/Downloads/test_export_puget_mask.tif",
+"UNITS": 1,
+"USE_Z": false,
+"WIDTH": 10.0
+}
+}
 
 console call:
 gdal_rasterize -l puget_water_land_mask_reproj -a id -tr 10.0 10.0 -a_nodata 0.0 -te -13756420.9988 5934610.381 -13587883.2397 6307335.6342 -ot Byte -of GTiff -co COMPRESS=DEFLATE -co NBITS=1 puget_water_land_mask_reproj.geojson C:/Users/austi/AppData/Local/Temp/processing_JSbqXp/d0ce1aea0e794c2382cb2df7b17a5db6/OUTPUT.tif
