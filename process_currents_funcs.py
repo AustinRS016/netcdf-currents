@@ -13,7 +13,7 @@ from scipy.spatial import Delaunay
 # --- Config ---
 NETCDF_PATH = "sscofs.t15z.20260301.fields.f069.nc"
 BASE_DIR = os.path.dirname(__file__)
-MASK_TIF_PATH = os.path.join(BASE_DIR, "data", "test_export_puget_mask.tif")
+MASK_TIF_PATH = os.path.join(BASE_DIR, "data", "puget_mask_50m_res.tif")
 OUTPUT_DIR = "output"
 U_MIN, U_MAX = -2.0, 2.0
 V_MIN, V_MAX = -2.0, 2.0
